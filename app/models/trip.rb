@@ -1,11 +1,11 @@
 class Trip < ApplicationRecord
   has_one_attached :photo
-  belong_to :user
+  belongs_to :user
 
-  validates :origin, :presence
-  validates :destination, :presence
-  validates :time_of_departure, :presence
-  validates :time_of_arrrival, :presence
-  validates :number_of_people, :presence
-  validates :user_id, :presence
+  validates :origin, presence: true
+  validates :destination, presence: true
+  validates :time_of_departure, presence: true
+  validates :time_of_arrrival, presence: true
+  validates :number_of_people, presence: true
+  validates :user_id, presence: true
 end
