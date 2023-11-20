@@ -9,3 +9,28 @@
 #   end
 
 
+
+# Créer 10 utilisateurs
+User.delete_all
+Trip.delete_all
+
+10.times do
+  User.create(
+    email: Faker::Internet.email,
+    encrypted_password: Devise::Encryptor.digest(User, Faker::Internet.password),
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name
+  )
+end
+
+# Créer 10 voyages associés à des utilisateurs
+10.times do
+  Trip.create(
+    origin: Faker::Address.city,
+    destination: Faker::Address.city,
+    time_of_departure: Faker::Time.forward(days: 30, period: :morning),
+    time_of_arrival: Faker::Time.forward(days: 40, period: :evening),
+    number_of_people: rand(1..5),
+    user: User.all.sample
+  )
+end
