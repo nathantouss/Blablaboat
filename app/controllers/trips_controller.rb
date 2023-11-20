@@ -3,10 +3,11 @@ class TripsController < ApplicationController
   end
 
   def new
+
   end
 
   def new
-    
+
   end
   private
 
