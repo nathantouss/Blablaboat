@@ -3,6 +3,14 @@ source "https://rubygems.org"
 ruby "3.1.2"
 
 gem "devise"
+# Gemfile
+gem "dotenv-rails"
+
+# Gemfile
+gem "cloudinary"
+gem 'faker'
+
+
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.2"
