@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :find_trip, only: [:create, :destroy]
+  before_action :find_trip, only: [:create]
 
   def new
     @booking = Booking.new
@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to @trip, status: :see_other
+    redirect_to @booking.trip, status: :see_other
   end
 
   private
