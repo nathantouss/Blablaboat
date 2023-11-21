@@ -31,7 +31,8 @@ class TripsController < ApplicationController
   end
 
   def destroy
-    @trip.delete
+    @trip.destroy
+    # redirect_to !!!! Dashboard !!!!, status: :see_other
   end
 
   private
