@@ -1,1 +1,11 @@
 <h1>Yo la zone</h1>
+
+<%= render "card" %>
+
+
+
+<div class="container">
+  <% @trips.each do |trip| %>
+    <%= render partial: 'trip_card', locals: { trip: trip } %>
+  <% end %>
+</div>
