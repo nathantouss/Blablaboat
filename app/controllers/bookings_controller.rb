@@ -1,8 +1,14 @@
 class BookingsController < ApplicationController
   before_action :find_trip, only: [:create]
 
+
   def new
     @booking = Booking.new
+    if user_sign_in?
+      render :new
+    else
+      render "shared/flashes", status: :forbidden
+    end
   end
 
   def create
