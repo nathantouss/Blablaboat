@@ -9,21 +9,17 @@
 #   end
 
 
-# Créer 10 utilisateurs
-Trip.destroy_all
+10.times do
+  user = User.create!(
+    email: Faker::Internet.email,
+    password: Devise::Encryptor.digest(User, Faker::Internet.password),
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name
 
-# 10.times do
-#   user = User.create!(
-#     email: Faker::Internet.email,
-#     password: Devise::Encryptor.digest(User, Faker::Internet.password),
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name
+  )
+  puts user
+end
 
-#   )
-#   puts user
-# end
-
-# Créer 10 voyages associés à des utilisateurs
 10.times do
   trip = Trip.create!(
     origin: Faker::Address.city,

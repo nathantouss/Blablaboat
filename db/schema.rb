@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.1].define(version: 2023_11_21_101848) do
-
+ActiveRecord::Schema[7.1].define(version: 2023_11_21_141035) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,6 +61,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_21_101848) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.date "time_of_arrival"
+    t.text "description"
+    t.float "price"
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
