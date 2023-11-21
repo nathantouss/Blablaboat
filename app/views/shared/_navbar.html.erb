@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+      <%= image_tag "https://images.unsplash.com/photo-1510525009512-ad7fc13eefab?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fC5wbmclMjBiYXRlYXV8ZW58MHx8MHx8fDA%3D" %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,11 +11,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
-          </li>
           <li class="nav-item">
             <%= link_to "Messages", "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Reserver un itineraire", "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Mes voyages", "#", class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -26,12 +29,6 @@
               <%= link_to "Another action", "#", class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Add Trip", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Dashboard", "#", class: "nav-link" %>
           </li>
 
         <% else %>
