@@ -1,6 +1,7 @@
 class Trip < ApplicationRecord
   # has_one_attached :photo
   belongs_to :user
+  has_many :bookings
 
   validates :origin, presence: true
   validates :destination, presence: true
