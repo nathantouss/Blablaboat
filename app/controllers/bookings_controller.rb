@@ -4,11 +4,6 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
-    if user_signed_in?
-      render :new
-    else
-      render "shared/flashes", status: :forbidden
-    end
   end
 
   def create
