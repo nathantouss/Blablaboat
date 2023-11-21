@@ -1,8 +1,9 @@
 class TripsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
   before_action :find_trip, only: [:show, :edit, :update, :destroy]
 
   def index
-    @trips = @Trip.all
+    @trips = Trip.all
   end
 
   def show
@@ -30,7 +31,7 @@ class TripsController < ApplicationController
   end
 
   def destroy
-    @trip.destroy
+    @trip.delete
   end
 
   private
