@@ -2,7 +2,9 @@ class TripsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   before_action :find_trip, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
+    @trips = Trip.all
   end
 
   def show
@@ -11,7 +13,7 @@ class TripsController < ApplicationController
   def new
     @trip = Trip.new
     if user_sign_in?
-    render :new
+      render :new
     else
       render "shared/flashes", status: :forbidden
     end
