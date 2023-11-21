@@ -1,0 +1,9 @@
+<h1>Coucou toi</h1>
+<h3>Your reservations are : </h3>
+<% @bookings.each do |booking|%>
+<p> <%= booking.trip.origin %> </p>
+<% end %>
+<h3>Your trips are : </h3>
+<% @trips.each do |trip|%>
+<p> <%= trip.origin %> </p>
+<% end %>

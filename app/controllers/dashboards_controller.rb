@@ -1,9 +1,6 @@
 class DashboardsController < ApplicationController
   def index
-    if user_sign_in?
-      render :index
-    else
-        render "shared/flashes", status: :forbidden
-    end
+    @trips = Trip.where(user: current_user)
+    @bookings = Booking.where(user: current_user)
   end
 end
