@@ -5,9 +5,24 @@ class TripsController < ApplicationController
 
   def index
     @trips = Trip.all
+    @markers = @trips.geocoded.map do |trip|
+      {
+        lat: trip.origin_latitude,
+        lng: trip.origin_longitude,
+        info_window_html: render_to_string(partial: "shared/info_window", locals: { trip: trip })
+      }
+    end
   end
 
   def show
+    @markers = [{
+      lat: @trip.origin_latitude,
+      lng: @trip.origin_longitude
+    },
+    {
+      lat: @trip.destination_latitude,
+      lng: @trip.destination_longitude
+    }]
   end
 
   def new

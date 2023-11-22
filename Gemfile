@@ -10,6 +10,7 @@ gem "dotenv-rails"
 gem "cloudinary"
 gem 'faker'
 gem 'validates_timeliness', '~> 7.0.0.beta1'
+gem "geocoder"
 
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
