@@ -9,7 +9,8 @@ class TripsController < ApplicationController
       {
         lat: trip.origin_latitude,
         lng: trip.origin_longitude,
-        info_window_html: render_to_string(partial: "shared/info_window", locals: { trip: trip })
+        info_window_html: render_to_string(partial: "shared/info_window", locals: { trip: trip }),
+        marker_html: render_to_string(partial: "shared/marker", locals: { marker: "departure.png" })
       }
     end
   end
@@ -17,11 +18,15 @@ class TripsController < ApplicationController
   def show
     @markers = [{
       lat: @trip.origin_latitude,
-      lng: @trip.origin_longitude
+      lng: @trip.origin_longitude,
+      marker_html: render_to_string(partial: "shared/marker", locals: { marker: "departure.png" }),
+      no_popup: true
     },
     {
       lat: @trip.destination_latitude,
-      lng: @trip.destination_longitude
+      lng: @trip.destination_longitude,
+      marker_html: render_to_string(partial: "shared/marker", locals: { marker: "arrival.png" }),
+      no_pupup: true
     }]
   end
 
