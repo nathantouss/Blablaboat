@@ -7,8 +7,12 @@
         <br>
         <p class="card-text"><strong>Departure date:</strong> <%= @trip.time_of_departure %></p>
         <p class="card-text"><strong>Arrival date:</strong> <%= @trip.time_of_arrival %></p>
-        <i class="fa-solid fa-person"></i> <p class="card-text"><strong>Capacity:</strong> <%= @trip.number_of_people %></p>
-        <i class="fa-solid fa-bolt"></i><p class="card-text"><strong>Available seats:</strong> <%= @trip.seat_available %></p>
+        <i class="fa-solid fa-person"></i>
+        <p class="card-text"><strong>Capacity:</strong> <%= @trip.number_of_people %></p>
+        <i class="fa-solid fa-bolt"></i>
+        <p class="card-text"><strong>Available seats:</strong> <%= @trip.seat_available %></p>
+        <p current_user.first_name p>
+        <p class="card-text"><strong>Price:</strong> <%= @trip.price %></p>
         <%= link_to "Book this trip", new_trip_booking_path(@trip), class: "btn btn-primary next-step" %>
       </div>
     </div>
@@ -17,7 +21,9 @@
   <div class="map-captain-container">
     <div class="profile-card">
       <p><strong>Capt'n of the boat</strong></p>
-        <%= cl_image_tag @trip.user.avatar.key, class: "avatar-large" if @trip.user.avatar.present? %>
+        <div class="square">
+          <%= cl_image_tag @trip.user.avatar.key, class: "avatar-large" if @trip.user.avatar.present? %>
+        </div>
       <p class="name"><%= @trip.user.first_name %> <%= @trip.user.last_name %> </p>
     </div>
 
