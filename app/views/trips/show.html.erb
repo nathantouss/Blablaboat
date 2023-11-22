@@ -1,14 +1,14 @@
 <div class="container cards">
   <div class='col-3'>
     <div class="trip-card-show">
-      <%= cl_image_tag @trip.photo.key, class: "trip-photo" if @trip.photo.present? %>
+      <%= cl_image_tag @trip.photo.key, class: "trip-photo-show" if @trip.photo.present? %>
       <div class="card-body">
         <h4 class="card-title"><%= @trip.origin %> <i class="fa-solid fa-sailboat fa-2xs"></i> <%= @trip.destination %></h4>
         <br>
-        <p class="card-text"><strong>Heure de départ:</strong> <%= @trip.time_of_departure %></p>
-        <p class="card-text"><strong>Heure d'arrivée:</strong> <%= @trip.time_of_arrival %></p>
-        <i class="fa-solid fa-person"></i> <p class="card-text"><strong>Capacité:</strong> <%= @trip.number_of_people %></p>
-        <i class="fa-solid fa-bolt"></i><p class="card-text"><strong>Places disponibles:</strong> <%= @trip.seat_available %></p>
+        <p class="card-text"><strong>Departure date:</strong> <%= @trip.time_of_departure %></p>
+        <p class="card-text"><strong>Arrival date:</strong> <%= @trip.time_of_arrival %></p>
+        <i class="fa-solid fa-person"></i> <p class="card-text"><strong>Capacity:</strong> <%= @trip.number_of_people %></p>
+        <i class="fa-solid fa-bolt"></i><p class="card-text"><strong>Available seats:</strong> <%= @trip.seat_available %></p>
         <%= link_to "Book this trip", new_trip_booking_path(@trip), class: "btn btn-primary next-step" %>
       </div>
     </div>
@@ -16,16 +16,13 @@
 
   <div class="map-captain-container">
     <div class="profile-card">
-      <i class="fa-solid fa-user-plus fa-lg"></i>
-      <%= cl_image_tag @trip.user.avatar.key, class: "avatar" if @trip.user.avatar.present? %>
-      <p class="name"><strong> <%= @trip.user.first_name %> <%= @trip.user.last_name %> </strong> </p>
+      <p><strong>Capt'n of the boat</strong></p>
+        <%= cl_image_tag @trip.user.avatar.key, class: "avatar-large" if @trip.user.avatar.present? %>
+      <p class="name"><%= @trip.user.first_name %> <%= @trip.user.last_name %> </p>
     </div>
 
-    <div class="map">
-      <div class="map-centered">
-        <i class="fa-solid fa-map fa-2xl"></i>
-      </div>
-    </div>
+
+    <%= render partial: "shared/map" %>
 
   </div>
 
