@@ -1,9 +1,21 @@
-<h1>Coucou toi</h1>
+<div class="container">
+<h1>Hello <%= current_user.first_name %></h1>
 <h3>Your reservations are : </h3>
+<ul>
 <% @bookings.each do |booking|%>
-<p> <%= booking.trip.origin %> </p>
+<li> <%= booking.trip.origin %> to <%= booking.trip.destination %> - <%= link_to "Delete",
+  booking_path(booking),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%></li>
 <% end %>
+</ul>
 <h3>Your trips are : </h3>
+<ul>
 <% @trips.each do |trip|%>
-<p> <%= trip.origin %> </p>
+<li> <%= trip.origin %> to <%= trip.destination %> - <%= link_to "Delete",
+  trip_path(trip),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%></li>
 <% end %>
+</ul>
+</div>

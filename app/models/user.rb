@@ -8,4 +8,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :first_name, presence: true
   validates :last_name, presence: true
+  before_save :capitalize
+
+  private
+
+  def capitalize
+    first_name.capitalize!
+    last_name.capitalize!
+  end
 end
