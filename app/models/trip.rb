@@ -7,8 +7,11 @@ class Trip < ApplicationRecord
   validates :destination, presence: true
   validates :time_of_departure, presence: true
   validates :time_of_arrival, presence: true
+  validates_datetime :time_of_arrival, { after: :time_of_departure,
+                                         message: "must be after or same as time of departure" }
   validates :number_of_people, presence: true
   validates :user_id, presence: true
+  validates :price, presence: true
 
   def seat_available
     seat_taken = 0
