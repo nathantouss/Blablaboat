@@ -1,6 +1,12 @@
 <h1>Paye batard</h1>
-
+<% if @booking.errors.messages[:trip][0] %>
+  <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <%= @booking.errors.messages[:trip][0] %>
+  </div>
+<% end %>
 <p class="card-text"><strong>Price:</strong> <%= @trip.price %></p>
+
 
 <div class="p-3">
   <%= simple_form_for [@trip, @booking] do |f| %>
