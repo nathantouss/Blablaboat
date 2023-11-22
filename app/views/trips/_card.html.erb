@@ -1,5 +1,5 @@
 <div class='col-3'>
-  <div class="trip-card">
+  <div class="trip-card-index">
     <%= cl_image_tag trip.photo.key, class: "trip-photo" if trip.photo.present? %>
     <div class="card-body">
       <h4 class="card-title"><%= trip.origin %> <i class="fa-solid fa-sailboat fa-2xs"></i> <%= trip.destination %></h4>
@@ -9,7 +9,7 @@
       <p class="card-text"><strong>Heure d'arrivée:</strong> <%= trip.time_of_arrival %></p>
       <i class="fa-solid fa-person"></i> <p class="card-text"><strong>Capacité:</strong> <%= trip.number_of_people %></p>
       <i class="fa-solid fa-bolt"></i><p class="card-text"><strong>Places disponibles:</strong> <%= trip.seat_available %></p>
-      <%#= link_to "Réserver", trip_reservation_path(trip), class: "btn btn-primary" %>
+      <%= link_to "See details", trip_path(trip), class: "btn btn-primary next-step" %>
     </div>
   </div>
 </div>

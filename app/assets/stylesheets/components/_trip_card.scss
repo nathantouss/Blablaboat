@@ -4,7 +4,7 @@
   grid-gap: 16px;
 }
 
-.trip-card {
+.trip-card-index {
   border: 1px solid #ccc;
   border-radius: 8px;
   margin: 10px;
@@ -14,6 +14,20 @@
   display: grid;
   width: 300px;
   height: 600px;
+  position: relative;
+}
+
+.trip-card-show {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: grid;
+  width: 500px;
+  height: 600px;
+  position: relative;
 }
 
 .trip-header {
@@ -27,7 +41,6 @@
   height: 200px;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
-
 }
 
 .trip-details {
@@ -36,4 +49,16 @@
 
 .trip-actions {
   text-align: right;
+}
+
+.next-step {
+position: absolute;
+bottom: 0;
+right: 0;
+margin: 10px;
+}
+
+.map-captain-container {
+display: grid;
+width: 700px;
 }
