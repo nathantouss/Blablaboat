@@ -1,14 +1,14 @@
 <div class='col-3'>
   <div class="trip-card-index">
-    <%= cl_image_tag trip.photo.key, class: "trip-photo" if trip.photo.present? %>
+    <%= cl_image_tag trip.photo.key, class: "trip-photo-index" if trip.photo.present? %>
     <div class="card-body">
       <h4 class="card-title"><%= trip.origin %> <i class="fa-solid fa-sailboat fa-2xs"></i> <%= trip.destination %></h4>
       <br>
-      <i class="fa-solid fa-anchor"></i><p class="card-text"><strong>Capitaine :</strong> <%= trip.user.first_name %> <%= trip.user.last_name %></p>
-      <p class="card-text"><strong>Heure de départ:</strong> <%= trip.time_of_departure %></p>
-      <p class="card-text"><strong>Heure d'arrivée:</strong> <%= trip.time_of_arrival %></p>
-      <i class="fa-solid fa-person"></i> <p class="card-text"><strong>Capacité:</strong> <%= trip.number_of_people %></p>
-      <i class="fa-solid fa-bolt"></i><p class="card-text"><strong>Places disponibles:</strong> <%= trip.seat_available %></p>
+      <i class="fa-solid fa-anchor"></i><p class="card-text"><strong>Capt'n :</strong> <%= trip.user.first_name %> <%= trip.user.last_name %></p>
+      <p class="card-text"><strong>Departure date:</strong> <%= trip.time_of_departure %></p>
+      <p class="card-text"><strong>HArrival date:</strong> <%= trip.time_of_arrival %></p>
+      <i class="fa-solid fa-person"></i> <p class="card-text"><strong>Capacity:</strong> <%= trip.number_of_people %></p>
+      <i class="fa-solid fa-bolt"></i><p class="card-text"><strong>Available seats:</strong> <%= trip.seat_available %></p>
       <%= link_to "See details", trip_path(trip), class: "btn btn-primary next-step" %>
     </div>
   </div>
