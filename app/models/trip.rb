@@ -13,6 +13,7 @@ class Trip < ApplicationRecord
 
   before_save :geocode_endpoints
 
+
   validates :origin, presence: true
   validates :destination, presence: true
   validates :time_of_departure, presence: true

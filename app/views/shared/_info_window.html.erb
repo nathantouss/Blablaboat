@@ -1,11 +1,12 @@
-    <div class="card-body">
-      <%= link_to trip_path(trip) do %>
+
+<%= link_to trip_path(trip) do %>
       <h4 class="card-title"><%= trip.origin %> <i class="fa-solid fa-sailboat fa-2xs"></i> <%= trip.destination %></h4>
       <% end %>
       <br>
       <i class="fa-solid fa-anchor"></i><p class="card-text"><strong>Capitaine :</strong> <%= trip.user.first_name %> <%= trip.user.last_name %></p>
       <p class="card-text"><strong>Heure de départ:</strong> <%= trip.time_of_departure %></p>
       <p class="card-text"><strong>Heure d'arrivée:</strong> <%= trip.time_of_arrival %></p>
-      <i class="fa-solid fa-person"></i> <p class="card-text"><strong>Capacité:</strong> <%= trip.number_of_people %></p>
-      <i class="fa-solid fa-bolt"></i><p class="card-text"><strong>Places disponibles:</strong> <%= trip.seat_available %></p>
+      <div class="row"><i class="fa-solid fa-person"></i> <p class="card-text"><strong>Capacité:</strong> <%= trip.number_of_people %></p></div>
+      <div class="row"><i class="fa-solid fa-bolt"></i><p class="card-text"><strong>Places disponibles:</strong> <%= trip.seat_available %></p></div>
+      <div class="row"><i class="fa-solid fa-euro-sign"></i><p class="card-text"><strong>Prix par place:</strong> <%= trip.price %></p></div>
     </div>
