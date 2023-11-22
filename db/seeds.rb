@@ -9,24 +9,33 @@
 #   end
 
 
+# 10.times do
+#   user = User.create!(
+#     email: Faker::Internet.email,
+#     password: Devise::Encryptor.digest(User, Faker::Internet.password),
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name
+#   )
+#   puts user
+# end
+Trip.destroy_all
 10.times do
-  user = User.create!(
-    email: Faker::Internet.email,
-    password: Devise::Encryptor.digest(User, Faker::Internet.password),
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name
-  )
-  puts user
-end
+  time_of_departure = Faker::Time.forward(days: 30, period: :morning)
+  time_of_arrival = Faker::Time.forward(days: 40, period: :evening)
 
-10.times do
-  trip = Trip.create!(
+  # Assurer que la date d'arrivée est après la date de départ
+  while time_of_arrival <= time_of_departure
+    time_of_arrival = Faker::Time.forward(days: 40, period: :evening)
+  end
+
+  trip = Trip.create(
     origin: Faker::Address.city,
     destination: Faker::Address.city,
-    time_of_departure: Faker::Time.forward(days: 30, period: :morning),
-    time_of_arrival: Faker::Time.forward(days: 40, period: :evening),
+    time_of_departure: time_of_departure,
+    time_of_arrival: time_of_arrival,
     number_of_people: rand(1..5),
-    user: User.all.sample
+    user: User.all.sample,
+    price: rand(50..200)
   )
   puts trip
 end
