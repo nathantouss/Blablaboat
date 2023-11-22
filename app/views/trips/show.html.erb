@@ -12,24 +12,42 @@
         <i class="fa-solid fa-bolt"></i>
         <p class="card-text"><strong>Available seats:</strong> <%= @trip.seat_available %></p>
         <p current_user.first_name p>
-        <p class="card-text"><strong>Price:</strong> <%= @trip.price %></p>
+        <p class="card-text"><strong>Price per member:</strong> <%= @trip.price %></p>
         <%= link_to "Book this trip", new_trip_booking_path(@trip), class: "btn btn-primary next-step" %>
       </div>
     </div>
   </div>
 
-  <div class="map-captain-container">
-    <div class="profile-card">
-      <p><strong>Capt'n of the boat</strong></p>
-        <div class="square">
-          <%= cl_image_tag @trip.user.avatar.key, class: "avatar-large" if @trip.user.avatar.present? %>
+  <div class="container">
+      <div class="map-captain-container">
+      <div class="cards">
+        <div class="profile-card">
+          <p><strong>Capt'n of the boat</strong></p>
+            <div class="square">
+              <%= cl_image_tag @trip.user.avatar.key, class: "avatar-large" if @trip.user.avatar.present? %>
+            </div>
+          <p class="name"><%= @trip.user.first_name %> <%= @trip.user.last_name %> </p>
         </div>
-      <p class="name"><%= @trip.user.first_name %> <%= @trip.user.last_name %> </p>
+
+        <div class="margin-auto">
+          <%= image_tag "logo_white_bg.png", class: "small-image", alt: "Navbar Logo" %>
+        </div>
+
+        <div class="profile-card-passengers">
+          <p><strong>Your passengers</strong></p>
+            <div class="cards">
+                <% @trip.bookings.each do |booking| %>
+                  <div class="square">
+                  <%= cl_image_tag booking.user.avatar.key, class: "avatar-large"%>
+                  </div>
+                  <% end %>
+            </div>
+          </div>
+         </div>
+
+      <%= render partial: "shared/map" %>
+
     </div>
-
-
-    <%= render partial: "shared/map" %>
-
   </div>
 
 </div>
