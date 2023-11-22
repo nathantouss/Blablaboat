@@ -1,10 +1,9 @@
 .profile-card {
   border: 1px solid #ccc;
   border-radius: 8px;
-  margin: 10px;
-  margin-left: 30px;
+  margin: 10px 0px 10px;
   padding: 15px;
-  background-color: #F8F0E5;
+  background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: grid;
   width: 300px;
@@ -16,4 +15,17 @@
   position: absolute;
   right: 10px;
   top: 60%;
+}
+
+.profile-card-passengers {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 10px 0px 10px;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: grid;
+  width: 350px;
+  height: 150px;
+  position: relative;
 }
