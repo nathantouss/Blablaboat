@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :find_trip, only: [:create]
-
+  before_action :find_trip, only: [:create, :new]
 
   def new
     @booking = Booking.new
