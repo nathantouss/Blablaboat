@@ -1,15 +1,15 @@
 <div class="container">
 <h1>Hello <%= current_user.first_name %></h1>
 <h3>Your reservations are : </h3>
-<div class="cards">
+<div class="col">
 <% @bookings.each do |booking|%>
-<%= render partial: "shared/card", locals: { trip: booking.trip, path: booking_path(booking) } %>
+<%= render partial: "shared/card", locals: { trip: booking.trip, path: booking_path(booking), name: "Cancel", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} } %>
 <% end %>
 </div>
 <h3>Your trips are : </h3>
-<div class="cards">
+<div class="col">
 <% @trips.each do |trip|%>
-<%= render partial: "shared/card", locals: { trip: trip, path: trip_path(trip) } %>
+<%= render partial: "shared/card", locals: { trip: trip, path: trip_path(trip), name: "Cancel", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} } %>
 <% end %>
 </div>
 </div>

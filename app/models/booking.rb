@@ -8,6 +8,7 @@ class Booking < ApplicationRecord
   validates_associated :trip
   validates :trip, presence: true, uniqueness: { scope: :user, message: "You already have a booking for this trip" }
   validates :user, presence: true
+  validate :different_user_than_trip_user
 
   private
 
@@ -17,5 +18,10 @@ class Booking < ApplicationRecord
       seat_taken += booking.number_of_people
     end
     return trip.number_of_people - seat_taken
+  end
+  def different_user_than_trip_user
+    if user == trip.user
+      errors.add(:user, "Your cannot book a trip that you posted")
+    end
   end
 end

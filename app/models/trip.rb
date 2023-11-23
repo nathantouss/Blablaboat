@@ -42,7 +42,6 @@ class Trip < ApplicationRecord
         self.origin_longitude = geocoded.longitude
       end
     end
-
     if destination_changed?
       geocoded = Geocoder.search(destination).first
       if geocoded
@@ -50,10 +49,10 @@ class Trip < ApplicationRecord
         self.destination_longitude = geocoded.longitude
       end
     end
+  end
 
-    def capitalize
-      origin.capitalize!
-      destination.capitalize!
-    end
+  def capitalize
+    origin.capitalize!
+    destination.capitalize!
   end
 end

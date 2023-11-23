@@ -1,9 +1,11 @@
 <h1>Paye batard</h1>
-<% if @booking.errors.messages[:trip][0] %>
+<% if @booking.errors.messages %>
+<% @booking.errors.messages.values.flatten.each do |message| %>
   <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    <%= @booking.errors.messages[:trip][0] %>
+    <%= message %>
   </div>
+  <% end %>
 <% end %>
 <p class="card-text"><strong>Price:</strong> <%= @trip.price %></p>
 

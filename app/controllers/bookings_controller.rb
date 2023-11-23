@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
       redirect_to @trip
     else
       render :new, status: :unprocessable_entity
+      # , alert: @booking.errors.messages.values.flatten
     end
   end
 

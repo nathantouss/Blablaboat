@@ -14,6 +14,9 @@
 .navbar-brand img {
   width: 50px;
   height: 50px;
+  background-color: #0f2c59;
+  padding: 8px;
+  border-radius: 50%;
 }
 
 .navbar {
@@ -28,6 +31,10 @@
 }
 
 a.navbar-brand {
+  display: flex;
   color: #0f2c59;
-  font-size: 32px;
+  font-size: 36px;
+  font-family: 'Caveat', cursive;
+  font-weight: bolder;
+  align-items: center;
 }
