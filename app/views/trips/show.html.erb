@@ -1,12 +1,13 @@
 <div class="container cards">
+  <!-- Trip Card Left Side of Screen-->
   <div class='col-3'>
     <div class="trip-card-show">
       <%= cl_image_tag @trip.photo.key, class: "trip-photo-show" if @trip.photo.present? %>
       <div class="card-body">
         <h4 class="card-title"><%= @trip.origin %> <i class="fa-solid fa-sailboat fa-2xs"></i> <%= @trip.destination %></h4>
         <br>
-        <p class="card-text"><strong>Departure date:</strong> <%= @trip.time_of_departure %></p>
-        <p class="card-text"><strong>Arrival date:</strong> <%= @trip.time_of_arrival %></p>
+        <p class="card-text"><strong>Departure time:</strong> <%= @trip.time_of_departure %></p>
+        <p class="card-text"><strong>Arrival time:</strong> <%= @trip.time_of_arrival %></p>
         <i class="fa-solid fa-person"></i>
         <p class="card-text"><strong>Capacity:</strong> <%= @trip.number_of_people %></p>
         <i class="fa-solid fa-bolt"></i>
@@ -18,36 +19,66 @@
     </div>
   </div>
 
+  <!-- Elements right side of screen -->
   <div class="container">
-      <div class="map-captain-container">
+    <div class="map-captain-container">
       <div class="cards">
+
+        <!-- Capt'n card -->
         <div class="profile-card">
           <p><strong>Capt'n of the boat</strong></p>
-            <div class="square">
-              <%= cl_image_tag @trip.user.avatar.key, class: "avatar-large" if @trip.user.avatar.present? %>
-            </div>
+          <div class="square">
+            <%= cl_image_tag @trip.user.avatar.key, class: "avatar-bordered" if @trip.user.avatar.present? %>
+          </div>
           <p class="name"><%= @trip.user.first_name %> <%= @trip.user.last_name %> </p>
         </div>
 
+        <!-- Boat logo -->
         <div class="margin-auto">
-          <%= image_tag "logo_white_bg.png", class: "small-image", alt: "Navbar Logo" %>
+          <%= image_tag "logo_white_bg.png", class: "small-image", alt: "Boat Logo" %>
         </div>
 
+        <!-- Passengers card -->
         <div class="profile-card-passengers">
-          <p><strong>Your passengers</strong></p>
+          <p><strong>Your co-passengers</strong></p>
             <div class="cards">
-                <% @trip.bookings.each do |booking| %>
-                  <div class="square">
-                  <%= cl_image_tag booking.user.avatar.key, class: "avatar-large"%>
-                  </div>
+              <% @trip.bookings.each_with_index do |booking, index| %>
+                <% break if index == 3 %>
+                <div class="square">
+                  <% unless current_user == booking.user %>
+                    <%= cl_image_tag booking.user.avatar.key, class: "avatar-large"%>
+                    <% if booking.number_of_people > 1 %>
+                      <div class="number-of-guests">
+                      <p class="centered"><%= booking.number_of_people %> <i class="fa-solid fa-user fa-2xs"></i></p>
+                     </div>
+                    <% end %>
                   <% end %>
+                </div>
+              <% end %>
             </div>
+            <!-- Pop up hover -->
+            <div class="tooltip-wrap">
+            <% if @trip.bookings.count > 3 %>
+              <p class="show-more">Show more</p>
+                <div class="tooltip-content passengers-info">
+                  <p><strong> <%= @trip.bookings.count %> people booked this trip </strong></p>
+                  <% @trip.bookings.each do |booking| %>
+                    <% if booking.number_of_people == 1 %>
+                      <p> <%= booking.user.first_name %> will climb on board on his own !</p>
+                    <% elsif booking.number_of_people == 2 %>
+                    <p> <%= booking.user.first_name %> will climb on board with <%= booking.number_of_people - 1 %> friend</p>
+                    <% else %>
+                      <p> <%= booking.user.first_name %> will climb on board with <%= booking.number_of_people - 1 %> friends</p>
+                    <% end %>
+                  <% end %>
+              </div>
+            <% end %>
           </div>
-         </div>
-
+        </div>
+      </div>
       <%= render partial: "shared/map" %>
-
     </div>
   </div>
+
 
 </div>
