@@ -3,9 +3,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
+  height: 70px;
   padding: 0px 50px;
-  bottom: 0;
+  // position: fixed;
+  // bottom: 0;
   width: 100%;
 }
 .footer-links {
@@ -26,4 +27,8 @@
 
 .a {
   color: #0f2c59;
+}
+
+.height-nav {
+  min-height: calc(100vh - 134px);
 }

@@ -1,0 +1,12 @@
+<div class="row justify-content-center">
+  <div class="col-lg-6">
+    <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Where do you want to leave from"
+            %>
+      <%= submit_tag "Search", name: "", class: "btn-blue" %>
+    <% end %>
+  </div>
+</div>
