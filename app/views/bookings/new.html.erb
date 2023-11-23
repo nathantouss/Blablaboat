@@ -1,7 +1,7 @@
+<div class="container">
+  <div class="row justify-content-center height-nav">
 <h1>Paye batard</h1>
-
 <p class="card-text"><strong>Price:</strong> <%= @trip.price %></p>
-
 <div class="p-3">
   <%= simple_form_for [@trip, @booking] do |f| %>
     <div class="form-inputs">
@@ -11,4 +11,6 @@
       <%= f.submit %>
     </div>
   <% end %>
+</div>
+</div>
 </div>
