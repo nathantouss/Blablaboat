@@ -10,6 +10,14 @@ class Booking < ApplicationRecord
   validates :user, presence: true
   validate :different_user_than_trip_user
 
+  def pending?
+    status == "pending"
+  end
+
+  def accepted?
+    status == "accepted"
+  end
+  
   private
 
   def seat_available
