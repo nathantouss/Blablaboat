@@ -1,0 +1,14 @@
+<div class="col-4">
+<div class="trip-card-index">
+    <%= cl_image_tag trip.photo.key, class: "trip-photo-index" if trip.photo.present? %>
+    <div class="card-body col">
+      <h4 class="card-title mb-1"><%= trip.origin %> <i class="fa-solid fa-sailboat fa-2xs"></i> <%= trip.destination %></h4>
+      <div class="d-flex my-2 align-items-center"><i class="fa-solid fa-anchor me-1"></i><p class="card-text m-0"><strong>Capt'n :</strong> <%= trip.user.first_name %> <%= trip.user.last_name %></p></div>
+      <div class="d-flex my-2 align-items-center"><p class="card-text m-0"><strong>Departure date:</strong> <%= trip.time_of_departure %></p></div>
+      <div class="d-flex my-2 align-items-center"><p class="card-text m-0"><strong>Arrival date:</strong> <%= trip.time_of_arrival %></p></div>
+      <div class="d-flex my-2 align-items-center"><i class="fa-solid fa-person me-1"></i> <p class="card-text m-0"><strong>Capacity:</strong> <%= trip.number_of_people %></p></div>
+      <div class="d-flex my-2 align-items-center"><i class="fa-solid fa-bolt me-1"></i><p class="card-text m-0"><strong>Available seats:</strong> <%= trip.seat_available %></p></div>
+      <%= link_to name,path,data: data, class: "btn btn-primary next-step"%>
+    </div>
+  </div>
+</div>

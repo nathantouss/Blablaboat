@@ -11,7 +11,7 @@ class Trip < ApplicationRecord
               latitude: :destination_latitude,
               longitude: :destination_longitude
 
-  before_save :geocode_endpoints
+  before_save :geocode_endpoints, :capitalize
 
 
   validates :origin, presence: true
@@ -42,7 +42,6 @@ class Trip < ApplicationRecord
         self.origin_longitude = geocoded.longitude
       end
     end
-
     if destination_changed?
       geocoded = Geocoder.search(destination).first
       if geocoded
@@ -50,5 +49,10 @@ class Trip < ApplicationRecord
         self.destination_longitude = geocoded.longitude
       end
     end
+  end
+
+  def capitalize
+    origin.capitalize!
+    destination.capitalize!
   end
 end

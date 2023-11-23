@@ -20,14 +20,13 @@ class TripsController < ApplicationController
       lat: @trip.origin_latitude,
       lng: @trip.origin_longitude,
       marker_html: render_to_string(partial: "shared/marker", locals: { marker: "departure.png" }),
-      no_popup: true
+      info_window_html: "Origin"
     },
     {
       lat: @trip.destination_latitude,
       lng: @trip.destination_longitude,
-      marker_html: render_to_string(partial: "shared/marker", locals: { marker: "arrival.png" }),
-      no_pupup: true
-    }]
+      info_window_html: "Destination",
+      marker_html: render_to_string(partial: "shared/marker", locals: { marker: "arrival.png" })    }]
   end
 
   def new
