@@ -1,0 +1,15 @@
+<%= simple_form_for trip do |f| %>
+  <%= f.input :origin %>
+  <%= f.input :destination %>
+  <%= f.input :photo, as: :file %>
+<%= f.input :time_of_departure,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+<%= f.input :time_of_arrival,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+<%= f.input :description %>
+<%= f.input :number_of_people %>
+<%= f.input :price %>
+  <%= f.submit %>
+<% end %>
