@@ -1,20 +1,6 @@
 <div class="container p-3">
-<h1>Ajouter un nouvel itinéraire</h1>
+<h1>Add a new trip</h1>
 <div class="p-3">
-<%= simple_form_for @trip do |f| %>
-  <%= f.input :origin %>
-  <%= f.input :destination %>
-  <%= f.input :photo, as: :file %>
-<%= f.input :time_of_departure,
-            as: :string,
-            input_html: { data: { controller: "datepicker" } } %>
-<%= f.input :time_of_arrival,
-            as: :string,
-            input_html: { data: { controller: "datepicker" } } %>
-<%= f.input :description %>
-<%= f.input :number_of_people %>
-<%= f.input :price %>
-  <%= f.submit %>
-<% end %>
+<%= render partial: "shared/form_trip", locals: { trip: @trip} %>
 </div>
 </div>

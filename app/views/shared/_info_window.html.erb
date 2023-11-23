@@ -1,12 +1,12 @@
-
-<%= link_to trip_path(trip) do %>
-      <h4 class="card-title"><%= trip.origin %> <i class="fa-solid fa-sailboat fa-2xs"></i> <%= trip.destination %></h4>
-      <% end %>
-      <br>
-      <i class="fa-solid fa-anchor"></i><p class="card-text"><strong>Capitaine :</strong> <%= trip.user.first_name %> <%= trip.user.last_name %></p>
-      <p class="card-text"><strong>Heure de départ:</strong> <%= trip.time_of_departure %></p>
-      <p class="card-text"><strong>Heure d'arrivée:</strong> <%= trip.time_of_arrival %></p>
-      <div class="row"><i class="fa-solid fa-person"></i> <p class="card-text"><strong>Capacité:</strong> <%= trip.number_of_people %></p></div>
-      <div class="row"><i class="fa-solid fa-bolt"></i><p class="card-text"><strong>Places disponibles:</strong> <%= trip.seat_available %></p></div>
-      <div class="row"><i class="fa-solid fa-euro-sign"></i><p class="card-text"><strong>Prix par place:</strong> <%= trip.price %></p></div>
-    </div>
+<div class="col">
+  <h4 class="card-title my-2"><%= trip.origin %> <i class="fa-solid fa-arrow-right"></i> <%= trip.destination %></h4>
+  <div class="d-flex my-2 align-items-center"><i class="fa-solid fa-user-tie me-1"></i><p class="card-text"><strong>Capt'n:</strong> <%= trip.user.first_name %> <%= trip.user.last_name %></p></div>
+  <div class="d-flex my-2 align-items-center"><i class="fa-solid fa-sailboat me-1"></i><p class="card-text"><strong>Departure:</strong> <%= trip.time_of_departure %></p></div>
+  <div class="d-flex my-2 align-items-center"><i class="fa-solid fa-anchor me-1"></i><p class="card-text"><strong>Arrival:</strong> <%= trip.time_of_arrival %></p></div>
+  <div class="d-flex my-2 align-items-center"><i class="fa-solid fa-person me-1"></i> <p class="card-text"><strong>Capacity:</strong> <%= trip.number_of_people %></p></div>
+  <div class="d-flex my-2 align-items-center"><i class="fa-solid fa-bolt me-1"></i><p class="card-text"><strong>Available seats:</strong> <%= trip.seat_available %></p></div>
+  <div class="d-flex mt-2 mb-4 align-items-center"><i class="fa-solid fa-euro-sign me-1"></i><p class="card-text"><strong>Price per seat:</strong> <%= trip.price %></p></div>
+  <%= link_to trip_path(trip), class: "next-step card-title" do %>
+  <h6><i class="fa-solid fa-sailboat fa-shake fa-2xs"></i> All Aboard <i class="fa-solid fa-sailboat fa-shake fa-2xs"></i></h6>
+  <% end %>
+</div>
