@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :find_trip, only: [:create, :new]
+  before_action :find_booking, only: [:destroy, :update]
 
   def new
     @booking = Booking.new
@@ -9,6 +10,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(bookings_params)
     @booking.user = current_user
     @booking.trip = @trip
+    @booking.status = "pending"
     if @booking.save
       redirect_to @trip
     else
@@ -17,8 +19,12 @@ class BookingsController < ApplicationController
     end
   end
 
+  def update
+    @booking.update(bookings_params)
+    redirect_to dashboards_path
+  end
+
   def destroy
-    @booking = Booking.find(params[:id])
     @booking.destroy
     redirect_to @booking.trip, status: :see_other
   end
@@ -29,7 +35,11 @@ class BookingsController < ApplicationController
     @trip = Trip.find(params[:trip_id])
   end
 
+  def find_booking
+    @booking = Booking.find(params[:id])
+  end
+
   def bookings_params
-    params.require(:booking).permit(:number_of_people)
+    params.require(:booking).permit(:number_of_people, :status)
   end
 end
