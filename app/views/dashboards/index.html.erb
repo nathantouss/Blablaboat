@@ -1,26 +1,30 @@
-<div class="height-nav mb-5">
-  <div class="container">
+<div class="height-nav">
+  <div class="container my-3">
 <h1>Hello <%= current_user.first_name %></h1>
-<h3>Your reservations are : </h3>
-<div class="col">
-<% @bookings.each do |booking|%>
-<%= render partial: "shared/card", locals: { trip: booking.trip, path: booking_path(booking), name: "Cancel", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} } %>
-<% end %>
-</div>
-<h3>Your trips are : </h3>
-<div class="row">
 <% @trips.each do |trip|%>
-  <div class="col-4">
-    <%= render partial: "shared/card", locals: { trip: trip, path: trip_path(trip), name: "Cancel", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} } %>
-  </div>
-      <div class="col-8">
-      <div class="trip-card-index"> 
+  <% if trip.pre_bookings.exists? %>
+      <div class="trip-card-index">
     <% trip.pre_bookings.each do |pre_booking|%>
+        <div class="border-bottom border-subtle"></div>
         <%= render partial: "shared/confirm_or_not_booking", locals: { pre_booking: pre_booking } %>
-    <% end %>
+        <% end %>
       </div>
-    </div>
+    <% end %>
   <% end %>
-    </div>
+<h3 class= "my-4">Trip that you posted: </h3>
+<div class="row my-4">
+<% @trips.each do |trip|%>
+<div class="col-4 mt-2">
+    <%= render partial: "shared/card", locals: { trip: trip, path: trip_path(trip), name: "Cancel", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} } %>
+</div>
+    <% end %>
+<h3 class="mt-5">Your reservations: </h3>
+  <div class="row my-3">
+  <% @bookings.each do |booking|%>
+    <div class="col-4 mt-2">
+  <%= render partial: "shared/card", locals: { trip: booking.trip, path: booking_path(booking), name: "Cancel", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} } %>
+  <% end %>
   </div>
+  </div>
+</div>
 </div>
