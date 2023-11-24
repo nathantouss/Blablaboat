@@ -14,7 +14,7 @@
         <p class="card-text"><strong>Available seats:</strong> <%= @trip.seat_available %></p>
         <p current_user.first_name p>
         <p class="card-text"><strong>Price per member:</strong> <%= @trip.price %></p>
-        <%= link_to "Book this trip", new_trip_pre_booking_path(@trip), class: "btn btn-primary next-step" %>
+        <%= link_to "Book this trip", new_trip_booking_path(@trip), class: "btn btn-primary next-step" %>
       </div>
     </div>
   </div>
