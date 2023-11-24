@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :trips do
-    resources :bookings, only: [:create, :new]
+    resources :bookings, only: [:create]
+    resources :pre_bookings, only: %i[create new]
   end
-  resources :bookings, only: [:destroy, :update]
+  resources :pre_bookings, only: [:destroy]
+  resources :bookings, only: [:destroy]
   resources :dashboards, only: [:index]
 end

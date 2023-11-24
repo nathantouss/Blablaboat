@@ -1,0 +1,8 @@
+<div class="card-body col">
+  <div class="d-flex my-2 align-items-center">
+    <%= cl_image_tag pre_booking.user.avatar.key, class: "avatar-large" if pre_booking.user.avatar.present? %>
+    <h4 class="card-title mb-1"><%= pre_booking.user.first_name %> <%= pre_booking.user.last_name %> </h4>
+    <%= link_to 'Accept', trip_bookings_path(pre_booking.trip, :pre_booking_id => pre_booking.id),data: {turbo_method: "create",}, class: "btn btn-info"%>
+    <%= link_to 'Reject', pre_booking,data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-light"%>
+</div>
+</div>
