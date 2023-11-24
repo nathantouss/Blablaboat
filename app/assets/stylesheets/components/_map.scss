@@ -7,10 +7,14 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: grid;
   width: 100%;
-  height: 425px;
+  height: 100%;
   margin-top: 10px;
 }
 
 .map-centered {
   margin: auto;
+}
+
+.map-show {
+width: 120%;
 }
