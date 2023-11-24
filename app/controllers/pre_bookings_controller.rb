@@ -28,7 +28,7 @@ class PreBookingsController < ApplicationController
   end
 
   def find_pre_booking
-    @pre_booking = Booking.find(params[:id])
+    @pre_booking = PreBooking.find(params[:id])
   end
 
   def bookings_params

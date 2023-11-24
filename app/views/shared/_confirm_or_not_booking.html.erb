@@ -1,9 +1,15 @@
 <div class="card-body col">
-  <div class="d-flex my-2 align-items-center">
+  <div class="d-flex my-2 align-items-center justify-content-between">
     <%= cl_image_tag pre_booking.user.avatar.key, class: "avatar-large" if pre_booking.user.avatar.present? %>
     <h4 class="card-title mb-1"><%= pre_booking.user.first_name %> <%= pre_booking.user.last_name %> </h4>
-    
-    <%= link_to 'Accept', trip_bookings_path(pre_booking.trip, :pre_booking_id => pre_booking.id),data: {turbo_method: "create",}, class: "btn btn-info"%>
-    <%= link_to 'Reject', pre_booking,data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-light"%>
+    <h4><%= pre_booking.number_of_people %> <i class="fa-solid fa-person me-1"></i></h4>
+    <p class= "align-items-center">For <%= pre_booking.trip.origin %><i class="fa-solid fa-arrow-right mx-2"></i><%= pre_booking.trip.destination %></p>
+    <%= link_to 'Accept', trip_bookings_path(pre_booking.trip, :pre_booking_id => pre_booking.id),data: {turbo_method: "create",}, class: "btn btn-info col-2"%>
+    <%= link_to 'Reject', pre_booking,data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-light col-2"%>
 </div>
+  <% if pre_booking.comment %>
+  <div class="d-flex my-2 align-items-center justify-content-between">
+    <p class= "offset-1 col-6 mb-0 fst-italic">"<%= pre_booking.comment %>"</p>
+  </div>
+  <% end %>
 </div>
