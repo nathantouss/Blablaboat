@@ -5,6 +5,7 @@
       <%= cl_image_tag @trip.photo.key, class: "trip-photo-show" if @trip.photo.present? %>
       <div class="card-body">
         <h4 class="card-title my-2"><%= @trip.origin %> <i class="fa-solid fa-arrow-right"></i> <%= @trip.destination %></h4>
+        <br><div class="d-flex my-2 align-items-center"><i class="fa-solid fa-sailboat me-1"></i><p class="card-text"><strong>Description:</strong> <%= @trip.description %></p></div>
         <br><div class="d-flex my-2 align-items-center"><i class="fa-solid fa-sailboat me-1"></i><p class="card-text"><strong>Departure:</strong> <%= @trip.time_of_departure %></p></div>
         <br><div class="d-flex my-2 align-items-center"><i class="fa-solid fa-anchor me-1"></i><p class="card-text"><strong>Arrival:</strong> <%= @trip.time_of_arrival %></p></div>
         <br><div class="d-flex my-2 align-items-center"><i class="fa-solid fa-person me-1"></i> <p class="card-text"><strong>Capacity:</strong> <%= @trip.number_of_people %></p></div>
@@ -12,7 +13,7 @@
         <br><div class="d-flex mt-2 mb-4 align-items-center"><i class="fa-solid fa-euro-sign me-1"></i><p class="card-text"><strong>Price per seat:</strong> <%= @trip.price %></p></div>
 
 <%# TOGGLE BUTTON %>
-        <div data-controller="toggle" class="next-step">
+        <div data-controller="toggle" class="next-step" id="buttonModal">
           <button data-action="click->toggle#fire" class="btn btn-outline-primary">Add a new monument</button>
 <%# FORM %>
           <div data-toggle-target="togglableElement" class="d-none booking-card">
@@ -90,3 +91,12 @@
 
 
 </div>
+
+<% if @pre_booking.errors.messages %>
+<% @pre_booking.errors.messages.values.flatten.each do |message| %>
+  <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <%= message %>
+  </div>
+  <% end %>
+<% end %>
