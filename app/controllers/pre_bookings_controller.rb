@@ -12,7 +12,7 @@ class PreBookingsController < ApplicationController
     if @pre_booking.save
       redirect_to @trip
     else
-      render :new, status: :unprocessable_entity
+      render "trips/show", status: :unprocessable_entity
     end
   end
 
