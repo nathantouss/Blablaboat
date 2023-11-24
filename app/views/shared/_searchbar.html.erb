@@ -6,6 +6,12 @@
             class: "form-control",
             placeholder: "Where do you want to leave from"
             %>
+      <%= number_field_tag :distance,
+            params[:distance],
+            class: "form-control",
+            style: "width: 120px",
+            placeholder: "Distance"
+            %>
       <%= submit_tag "Search", name: "", class: "btn-blue" %>
     <% end %>
   </div>

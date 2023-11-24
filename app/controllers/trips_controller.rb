@@ -4,7 +4,7 @@ class TripsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    params[:query].present? ? @trips = Trip.where("origin ILIKE ?", "%#{params[:query]}%") : @trips = Trip.all
+    params[:query].present? ? @trips = Trip.near(params[:query], params[:distance].to_i, latitude: :origin_latitude, longitude: :origin_longitude) : @trips = Trip.all
     @markers = @trips.geocoded.map do |trip|
       {
         lat: trip.origin_latitude,
