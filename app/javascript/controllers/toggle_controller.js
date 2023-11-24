@@ -6,6 +6,11 @@ export default class extends Controller {
 
   connect() {
     console.log(this.togglableElementTarget);
+    document.addEventListener("turbo:render", ()=> {
+      if (document.querySelector(".alert-warning")){
+        this.togglableElementTarget.classList.toggle("d-none")
+      }
+      });
   }
   fire() {
     this.togglableElementTarget.classList.toggle("d-none");
