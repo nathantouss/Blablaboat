@@ -35,13 +35,17 @@
 width: 30px;
 height: 30px;
 border-radius: 50%;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-background-color: #f8f0e5;
-border: 2px solid #0f2c59;
+border: 1px solid #0f2c59;
 position: absolute;
-top: 30px;
-right: 10px;
+top: 0px;
+right: -10px;
 color: #0f2c59;
 font-weight: bold;
 font-size: 14px;
+}
+
+.name-close {
+position: absolute;
+left: 30px;
+font-style: italic;
 }
