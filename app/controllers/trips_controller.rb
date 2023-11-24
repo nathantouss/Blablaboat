@@ -27,7 +27,7 @@ class TripsController < ApplicationController
       lng: @trip.destination_longitude,
       info_window_html: "Destination",
       marker_html: render_to_string(partial: "shared/marker", locals: { marker: "arrival.png" })    }]
-    @booking = Booking.new
+    @pre_booking = PreBooking.new
   end
 
   def new
