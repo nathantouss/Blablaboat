@@ -32,6 +32,6 @@ class PreBookingsController < ApplicationController
   end
 
   def bookings_params
-    params.require(:pre_booking).permit(:number_of_people)
+    params.require(:pre_booking).permit(:number_of_people, :comment)
   end
 end
