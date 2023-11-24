@@ -10,9 +10,10 @@
    <%= simple_form_for [@trip, @pre_booking] do |f| %>
       <div class="form-inputs">
         <%= f.input :number_of_people, required: true %>
+        <%= f.input :comment %>
       </div>
       <div class="form-actions">
-        <%= f.submit, class: "btn btn-primary"  %>
+        <%= f.button :submit, class: "btn btn-primary"  %>
       </div>
     <% end %>
  </div>
