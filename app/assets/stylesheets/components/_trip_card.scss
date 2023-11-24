@@ -1,6 +1,5 @@
 .cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
   grid-gap: 16px;
 }
 
@@ -27,9 +26,8 @@
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: grid;
-  width: 500px;
-  height: 750px;
   position: relative;
+  height: 90%;
 }
 
 .trip-header {
@@ -47,7 +45,7 @@
 
 .trip-photo-show {
   width: 100%;
-  height: 280px;
+  height: 100%;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
 }
@@ -69,13 +67,12 @@ margin: 10px;
 
 .map-captain-container {
 display: grid;
-width: 700px;
 margin-bottom: 30px;
 }
 
 .small-image {
-  height: 120px;
-  width: 120px;
+  height: 100%;
+  width: 100%;
 }
 
 .margin-auto {
