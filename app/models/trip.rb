@@ -2,6 +2,7 @@ class Trip < ApplicationRecord
   has_one_attached :photo
   belongs_to :user
   has_many :bookings, dependent: :destroy
+  has_many :pre_bookings, dependent: :destroy
 
   geocoded_by :origin,
               latitude: :origin_latitude,

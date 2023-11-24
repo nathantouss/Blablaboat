@@ -1,27 +1,16 @@
 class BookingsController < ApplicationController
-  before_action :find_trip, only: [:create, :new]
-  before_action :find_booking, only: [:destroy, :update]
-
-  def new
-    @booking = Booking.new
-  end
+  before_action :find_booking, only: [:destroy]
+  skip_before_action :verify_authenticity_token, only: [:create]
 
   def create
-    @booking = Booking.new(bookings_params)
-    @booking.user = current_user
-    @booking.trip = @trip
-    @booking.status = "pending"
-    if @booking.save
-      redirect_to @trip
-    else
-      render :new, status: :unprocessable_entity
-      # , alert: @booking.errors.messages.values.flatten
-    end
-  end
-
-  def update
-    @booking.update(bookings_params)
-    redirect_to dashboards_path
+    find_pre_booking
+    @booking = Booking.new
+    @booking.user = @pre_booking.user
+    @booking.trip = @pre_booking.trip
+    @booking.number_of_people = @pre_booking.number_of_people
+    @booking.save
+    @pre_booking.destroy
+    redirect_to @booking.trip
   end
 
   def destroy
@@ -31,15 +20,11 @@ class BookingsController < ApplicationController
 
   private
 
-  def find_trip
-    @trip = Trip.find(params[:trip_id])
-  end
-
   def find_booking
     @booking = Booking.find(params[:id])
   end
 
-  def bookings_params
-    params.require(:booking).permit(:number_of_people, :status)
+  def find_pre_booking
+    @pre_booking = PreBooking.find(params[:pre_booking_id])
   end
 end

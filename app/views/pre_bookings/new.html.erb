@@ -1,6 +1,6 @@
 <h1>Paye batard</h1>
-<% if @booking.errors.messages %>
-<% @booking.errors.messages.values.flatten.each do |message| %>
+<% if @pre_booking.errors.messages %>
+<% @pre_booking.errors.messages.values.flatten.each do |message| %>
   <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     <%= message %>
@@ -11,7 +11,7 @@
 
 
 <div class="p-3">
-  <%= simple_form_for [@trip, @booking] do |f| %>
+  <%= simple_form_for [@trip, @pre_booking] do |f| %>
     <div class="form-inputs">
       <%= f.input :number_of_people %>
     </div>
