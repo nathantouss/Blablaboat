@@ -14,11 +14,9 @@
     <%= render partial: "shared/card", locals: { trip: trip, path: trip_path(trip), name: "Cancel", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} } %>
   </div>
       <div class="col-8">
-      <div class="trip-card-index">
-    <% trip.bookings.each do |booking|%>
-      <% if booking.pending? %>
-        <%= render partial: "shared/change_booking_status", locals: { booking: booking } %>
-      <% end %>
+      <div class="trip-card-index"> 
+    <% trip.pre_bookings.each do |pre_booking|%>
+        <%= render partial: "shared/confirm_or_not_booking", locals: { pre_booking: pre_booking } %>
     <% end %>
       </div>
     </div>

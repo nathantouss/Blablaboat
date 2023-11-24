@@ -11,7 +11,7 @@
     <% end %>
     <p class="card-text"><strong>Price:</strong> <%= @trip.price %></p>
 <div class="p-3">
-  <%= simple_form_for [@trip, @booking] do |f| %>
+  <%= simple_form_for [@trip, @pre_booking] do |f| %>
     <div class="form-inputs">
       <%= f.input :number_of_people %>
     </div>
