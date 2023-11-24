@@ -6,6 +6,7 @@ class PreBookingsController < ApplicationController
   end
 
   def create
+
     @pre_booking = PreBooking.new(bookings_params)
     @pre_booking.user = current_user
     @pre_booking.trip = @trip
