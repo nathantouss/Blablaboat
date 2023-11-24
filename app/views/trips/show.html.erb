@@ -1,7 +1,7 @@
-<div class="container cards">
+<div class="container cards col">
   <!-- Trip Card Left Side of Screen-->
-  <div class='col-3'>
-    <div class="trip-card-show">
+
+    <div class="trip-card-show col-4 ">
       <%= cl_image_tag @trip.photo.key, class: "trip-photo-show" if @trip.photo.present? %>
       <div class="card-body">
         <h4 class="card-title my-2"><%= @trip.origin %> <i class="fa-solid fa-arrow-right"></i> <%= @trip.destination %></h4>
@@ -24,10 +24,8 @@
       </div>
     </div>
 
-  </div>
-
   <!-- Elements right side of screen -->
-  <div class="container">
+  <div class="container col-8">
     <div class="map-captain-container">
       <div class="cards">
         <!-- Capt'n card -->
